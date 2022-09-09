@@ -58,7 +58,7 @@ export default function Home({ data }) {
               title={article.title}
               articleImage={article.articleImage.responsiveImage}
               date={article.date}
-              slug={article.slug} />
+              slug={`posts/${article.slug}`} />
           ))}
         </div>
       </section>
