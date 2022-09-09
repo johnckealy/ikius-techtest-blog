@@ -7,7 +7,7 @@ const nextConfig = {
     defaultLocale: "en",
   },
   images: {
-    domains: [],
+    domains: ['www.datocms-assets.com'],
   },
 
 }

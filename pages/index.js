@@ -1,24 +1,43 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
-import { getSortedPostsData } from '../lib/posts';
+// import { getSortedPostsData } from '../lib/posts';
+import { request } from "../lib/datocms";
+import ArticleCard from '@/components/ArticleCard';
 
+const HOMEPAGE_QUERY = `
+query MyQuery {
+  allArticles {
+    date
+    title
+    articleImage {
+      responsiveImage {
+        alt
+        base64
+        bgColor
+        title
+      }
+    }
+    slug
+  }
+}
+`;
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
+  const data = await request({
+    query: HOMEPAGE_QUERY,
+  });
   return {
-    props: {
-      allPostsData,
-    },
+    props: { data }
   };
 }
 
 
-export default function Home({ allPostsData }) {
+export default function Home({ data }) {
   return (
     <Layout home>
       <Head>
-        <title>{siteTitle}</title>
+        <title>Home </title>
       </Head>
       <section className={utilStyles.headingMd}>
         <p>Hi, I'm John!</p>
@@ -31,19 +50,19 @@ export default function Home({ allPostsData }) {
 
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              {title}
-              <br />
-              {id}
-              <br />
-              {date}
-            </li>
+        <div className='grid grid-cols-1 md:grid-cols-3'>
+
+          {data.allArticles.map((article) => (
+            <ArticleCard
+              key={article.title}
+              title={article.title}
+              articleImage={article.articleImage.responsiveImage}
+              date={article.date}
+              slug={article.slug} />
           ))}
-        </ul>
+        </div>
       </section>
 
     </Layout>
-  );
+  )
 }
