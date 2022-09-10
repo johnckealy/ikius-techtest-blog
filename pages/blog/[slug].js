@@ -18,6 +18,7 @@ export default function BlogPost({ article, allArticles }) {
     <>
       <Head>
         {renderMetaTags(article._seoMetaTags)}
+      </Head>
 
       <ArticleJsonLd
         type="Blog"
@@ -32,8 +33,7 @@ export default function BlogPost({ article, allArticles }) {
         dateModified="2015-02-05T09:00:00+08:00"
         authorName="Jane Blogs"
         description="This is a mighty good description of this blog."
-        />
-        </Head>
+      />
 
       <div className="container mx-auto">
         <div className="flex items-center mt-10 justify-between py-4">
