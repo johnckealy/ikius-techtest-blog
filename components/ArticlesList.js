@@ -13,7 +13,7 @@ const ArticlesList = ({ articleListData, sectionHeader }) => {
             title={article.title}
             articleImage={article.articleImage.responsiveImage}
             date={article.date}
-            slug={`posts/${article.slug}`} />
+            slug={`${article.slug}`} />
         ))}
       </div>
     </section>

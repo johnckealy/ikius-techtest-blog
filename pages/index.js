@@ -4,18 +4,19 @@ import { Image } from 'react-datocms';
 import Footer from '@/components/Footer';
 import { HOMEPAGE_QUERY } from '../lib/datoQueries';
 import ArticlesList from '@/components/ArticlesList';
+import { renderMetaTags } from 'react-datocms';
 
 
-export default function Home({  allArticles, author   }) {
+export default function Home({ allArticles, author }) {
   return (
     <>
       <Head>
-        <title>Home</title>
+        {renderMetaTags(author._seoMetaTags)}
       </Head>
 
       <section className='text-center  mb-12 container mx-auto'>
         <h1>{author.greeting}</h1>
-        <div className='w-40 h-40 mx-auto'>
+        <div className='w-40 h-40 mx-auto m-4'>
           <Image className='rounded-full' data={author.profileImage.responsiveImage} />
         </div>
         <p>{author.blurb}</p>

@@ -11,7 +11,7 @@ const Footer = ({ articles }) => {
           <ul className="leading-8">
             {articles.map((article) => (
               <li key={article.title} className="text-gray-100 hover:underline hover:text-white">
-                <Link href={`/posts/${article.slug}`}>
+                <Link href={`/blog/${article.slug}`}>
                   <a>{article.title}</a>
                 </Link>
               </li>

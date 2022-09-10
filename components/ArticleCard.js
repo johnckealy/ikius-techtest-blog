@@ -1,6 +1,7 @@
 import { Image } from 'react-datocms'
 import Link from 'next/link'
-const { DateTime } = require("luxon");
+import { DateTime } from "luxon";
+
 
 const ArticleCard = ({ articleImage, date, title, slug }) => {
 
@@ -8,17 +9,19 @@ const ArticleCard = ({ articleImage, date, title, slug }) => {
 
   return (
     <>
-      <Link href={slug}>
-        <a className='overflow-hidden shadow-article-card rounded-xl'>
-          <div className='flex md:flex-col'>
-            <Image data={articleImage} />
-            <div className='p-2 md:p-4  min-h-[100px] min-w-[70%] h-full flex justify-between flex-col'>
-              <h4>{title}</h4>
-              <div className='text-right text-gray-500 '>{formattedDate}</div>
+      <div className='overflow-hidden shadow-article-card hover:shadow-2xl rounded-xl transition hover:-translate-y-1'>
+        <Link href={`/blog/${slug}`}>
+          <a className=''>
+            <div className='flex md:flex-col'>
+              <Image data={articleImage} />
+              <div className='text-md md:text-lg p-2 md:p-4 min-h-[100px] md:min-h-[200px] min-w-[70%] h-full flex justify-between flex-col'>
+                <h4>{title}</h4>
+                <div className='text-right text-gray-500 '>{formattedDate}</div>
+              </div>
             </div>
-          </div>
-        </a>
-      </Link>
+          </a>
+        </Link>
+      </div>
 
     </>
   );

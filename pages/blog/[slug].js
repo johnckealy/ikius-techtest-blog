@@ -1,25 +1,33 @@
 import Link from "next/link";
+import Head from 'next/head';
 import { Image, StructuredText } from "react-datocms";
 import { request } from "../../lib/datocms";
 import ArticlesList from "@/components/ArticlesList";
 import { ARTICLE_QUERY, PATHS_QUERY } from "../../lib/datoQueries";
 import Footer from '@/components/Footer';
+import { DateTime } from "luxon";
+import { renderMetaTags } from 'react-datocms';
 
 
 export default function BlogPost({ article, allArticles }) {
   const { title, date, articleImage, content, author } = article;
+  const formattedDate = DateTime.fromISO(date).toLocaleString(DateTime.DATE_FULL)
 
   return (
     <>
+      <Head>
+        {renderMetaTags(article._seoMetaTags)}
+      </Head>
+
       <div className="container mx-auto">
-        <div className="flex items-center justify-between py-4">
+        <div className="flex items-center mt-10 justify-between py-4">
           <div className="flex items-center">
             <div className="w-10 h-10">
               <Image className="rounded-full" data={author.profileImage.responsiveImage} />
             </div>
             <span className="pl-2">{author.name}</span>
           </div>
-          <span className="text-gray-400">{date}</span>
+          <span className="text-gray-400">{formattedDate}</span>
         </div>
 
         <section>
@@ -43,7 +51,7 @@ export const getStaticPaths = async (context) => {
   });
 
   let paths = [];
-  slugQuery.allArticles.map((p) => paths.push(`/posts/${p.slug}`));
+  slugQuery.allArticles.map((p) => paths.push(`/blog/${p.slug}`));
 
   return {
     paths,

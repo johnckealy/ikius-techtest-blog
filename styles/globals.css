@@ -22,4 +22,7 @@ body {
   h4 {
     @apply leading-6 text-left pb-4 md:pb-10 font-bold;
   }
+  p {
+    @apply pb-2;
+  }
 }
