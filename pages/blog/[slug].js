@@ -1,17 +1,17 @@
 import Link from "next/link";
 import Head from 'next/head';
+import Footer from '@/components/Footer';
+import ArticlesList from "@/components/ArticlesList";
 import { useRouter } from 'next/router';
 import { Image, StructuredText } from "react-datocms";
-import { request } from "../../lib/datocms";
-import ArticlesList from "@/components/ArticlesList";
-import { ARTICLE_QUERY, PATHS_QUERY } from "../../lib/datoQueries";
-import Footer from '@/components/Footer';
+import { request } from "@/lib/datocms";
+import { ARTICLE_QUERY, PATHS_QUERY } from "@/lib/datoQueries";
 import { DateTime } from "luxon";
 import { renderMetaTags } from 'react-datocms';
 import { ArticleJsonLd } from 'next-seo';
 
 
-export default function BlogPost({ article, allArticles }) {
+const BlogPost = ({ article, allArticles }) => {
   const { title, date, articleImage, content, author } = article;
   const formattedDate = DateTime.fromISO(date).toLocaleString(DateTime.DATE_FULL)
   const { asPath } = useRouter()
@@ -56,7 +56,7 @@ export default function BlogPost({ article, allArticles }) {
 }
 
 
-export const getStaticPaths = async (context) => {
+export const getStaticPaths = async () => {
   const slugQuery = await request({
     query: PATHS_QUERY,
   });
@@ -82,3 +82,6 @@ export const getStaticProps = async ({ params }) => {
     props: await request(graphqlRequest),
   }
 };
+
+
+export default BlogPost;

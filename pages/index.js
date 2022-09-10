@@ -1,9 +1,9 @@
 import Head from 'next/head';
-import { request } from "../lib/datocms";
-import { Image } from 'react-datocms';
 import Footer from '@/components/Footer';
-import { HOMEPAGE_QUERY } from '../lib/datoQueries';
 import ArticlesList from '@/components/ArticlesList';
+import { request } from "@/lib/datocms";
+import { Image } from 'react-datocms';
+import { HOMEPAGE_QUERY } from '@/lib/datoQueries';
 import { renderMetaTags } from 'react-datocms';
 
 

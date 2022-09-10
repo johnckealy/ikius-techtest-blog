@@ -20,7 +20,4 @@ const ArticlesList = ({ articleListData, sectionHeader }) => {
   );
 }
 
-
-
-
 export default ArticlesList;

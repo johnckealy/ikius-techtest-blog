@@ -81,7 +81,7 @@ and it'll just work.
 ## Bonus round: Open Graph and Json-ld
 
 Things got a little hacky at this stage since Json-ld was entirely new ground for me 🤔 As
-I understood it, the function of json-ld is this context is to create rich-text meta data. It
+I understood it, the function of json-ld in this context is to create rich-text meta data. It
 seemed as though the `next-seo` package was a good fit, so I added it
 to the blog page (but not the homepage) as an experiment. This was in addition to
 using the `renderMetaTags()` from Datocms.

@@ -16,11 +16,6 @@ module.exports = {
       },
     },
     extend: {
-      colors: {
-        'primary': '#0077B5',
-        'secondary': '#c5ff3e',
-        'textdefault': '#2f4f4f',
-      },
       boxShadow: {
         'article-card': '0px 4px 4px rgba(0, 0, 0, 0.25)'
       }

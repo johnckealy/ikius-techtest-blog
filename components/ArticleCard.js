@@ -4,9 +4,7 @@ import { DateTime } from "luxon";
 
 
 const ArticleCard = ({ articleImage, date, title, slug }) => {
-
   const formattedDate = DateTime.fromISO(date).toLocaleString(DateTime.DATE_FULL)
-
   return (
     <>
       <div className='overflow-hidden shadow-article-card hover:shadow-2xl rounded-xl transition hover:-translate-y-1'>
