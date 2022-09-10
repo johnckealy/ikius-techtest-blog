@@ -7,6 +7,7 @@ import { ARTICLE_QUERY, PATHS_QUERY } from "../../lib/datoQueries";
 import Footer from '@/components/Footer';
 import { DateTime } from "luxon";
 import { renderMetaTags } from 'react-datocms';
+import { ArticleJsonLd } from 'next-seo';
 
 
 export default function BlogPost({ article, allArticles }) {
@@ -18,6 +19,21 @@ export default function BlogPost({ article, allArticles }) {
       <Head>
         {renderMetaTags(article._seoMetaTags)}
       </Head>
+
+      <ArticleJsonLd
+        type="Blog"
+        url="https://example.com/blog"
+        title="Blog headline"
+        images={[
+          'https://example.com/photos/1x1/photo.jpg',
+          'https://example.com/photos/4x3/photo.jpg',
+          'https://example.com/photos/16x9/photo.jpg',
+        ]}
+        datePublished="2015-02-05T08:00:00+08:00"
+        dateModified="2015-02-05T09:00:00+08:00"
+        authorName="Jane Blogs"
+        description="This is a mighty good description of this blog."
+      />
 
       <div className="container mx-auto">
         <div className="flex items-center mt-10 justify-between py-4">
