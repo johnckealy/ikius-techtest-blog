@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { Image, StructuredText } from "react-datocms";
 import { request } from "../../lib/datocms";
 import ArticlesList from "@/components/ArticlesList";
@@ -13,6 +14,7 @@ import { ArticleJsonLd } from 'next-seo';
 export default function BlogPost({ article, allArticles }) {
   const { title, date, articleImage, content, author } = article;
   const formattedDate = DateTime.fromISO(date).toLocaleString(DateTime.DATE_FULL)
+  const { asPath } = useRouter()
 
   return (
     <>
@@ -22,17 +24,10 @@ export default function BlogPost({ article, allArticles }) {
 
       <ArticleJsonLd
         type="Blog"
-        url="https://example.com/blog"
-        title="Blog headline"
-        images={[
-          'https://example.com/photos/1x1/photo.jpg',
-          'https://example.com/photos/4x3/photo.jpg',
-          'https://example.com/photos/16x9/photo.jpg',
-        ]}
-        datePublished="2015-02-05T08:00:00+08:00"
-        dateModified="2015-02-05T09:00:00+08:00"
-        authorName="Jane Blogs"
-        description="This is a mighty good description of this blog."
+        url={asPath}
+        title={title}
+        authorName={author.name}
+        description={title}
       />
 
       <div className="container mx-auto">
