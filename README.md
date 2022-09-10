@@ -1,7 +1,53 @@
 # Ikius Tech Test
 
 
+Final result:
 
+I had an old domain lying around, so you can view the final result at:
+(https://www.surfledger.com/)[surfledger.com]
+
+or if you prefer, here's the vercel link:
+(https://ikius-techtest-blog.vercel.app)[ikius-techtest-blog.vercel.app]
+
+Github Link:
+(https://github.com/johnckealy/ikius-techtest-blog/blob/main/README.md)[ikius-techtest-blog]
+
+
+
+# Deployment
+
+Two clicks, lightning quick builds.. vercel is awesome. I think I actually prefer it
+to Netlify.
+
+
+
+# Performance
+
+The homepage scored mostly green on lighthouse:
+![home](https://user-images.githubusercontent.com/43955976/189484230-fd1e1310-665a-4418-a174-d6e791412623.png)
+
+with the blog pages doing a little better:
+![page](https://user-images.githubusercontent.com/43955976/189484287-4799fde7-83da-408b-b32f-03fc47cb115d.png)
+
+What let me down on was image optimisation, I have a little more to learn about that.
+
+
+# Fetching content from DatoCMS
+
+Dato has a bit of a learning curve, and since I've never used it, it probably
+tool the most time to figure out. I do wish their docs were a little better 🤨
+All the same, it's a REALLY powerful CMS. It's cool how you can do things like,
+for example, require a content creator to add an alt tag to an image, so that
+good SEO and accessibility can be enforced. Images were probably the hardest part, but
+it was also clear how cool the tooling is. You can add focal points, resize, crop,
+and set aspect ratios with queries like `responsiveImage(imgixParams: { ar: "3:1", fit: crop })...`.
+
+Imaging with the mobile view of the blog index did make my lighthouse score suffer on best
+practice a little, so I do have more to learn on that one. But overall, I was able
+to optimise the images fairly well.
+
+The rest of the data was just a case of learning how to build the queries and
+setting up getStaticProps and getStaticPaths props in Next.js.
 
 
 ## Adding SEO from DatoCMS
@@ -12,7 +58,7 @@ and this allows you to populate each page with the SEO data from Dato, while
 also falling back to some defaults if they're missing. There's more to learn here,
 but my app has meta title, description, and many more tags on each page. It's pretty
 cool that you can just plug the data into the `renderMetaTags` from `react-datocms`
-and it'll just work. 
+and it'll just work.
 
 
 ## Bonus round: Open Graph and Json-ld
