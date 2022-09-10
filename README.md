@@ -10,7 +10,7 @@ or if you prefer, here's the vercel link:
 [ikius-techtest-blog.vercel.app](https://ikius-techtest-blog.vercel.app)
 
 Github Link:
-[ikius-techtest-blog](https://github.com/johnckealy/ikius-techtest-blog/blob/main/README.md)
+[ikius-techtest-blog](https://github.com/johnckealy/ikius-techtest-blog)
 
 
 ## Time taken
@@ -19,14 +19,14 @@ I worked on this for most of Friday and little on Saturday morning.
 
 ## Deployment
 
-Two clicks, lightning quick builds.. vercel is awesome. I think I actually prefer it
+Two clicks, lightning quick builds.. Vercel is awesome. I think I actually prefer it
 to Netlify.
 
 
 ## External libraries
 
 I choose `Tailwindcss` for the styling/theming, `luxon` for date formatting, `react-datocms`
-to interact with DatoCMs, `next-seo` for Json-ld rich-text content, and `graphql-request`
+to interact with DatoCMS, `next-seo` for Json-ld rich-text content, and `graphql-request`
 for graphQL queries.
 
 
@@ -37,12 +37,11 @@ The homepage scored mostly green on lighthouse:
 ![home](https://user-images.githubusercontent.com/43955976/189484230-fd1e1310-665a-4418-a174-d6e791412623.png)
 
 
-
 with the blog pages doing a little better:
 
 ![page](https://user-images.githubusercontent.com/43955976/189484287-4799fde7-83da-408b-b32f-03fc47cb115d.png)
 
-What let me down on was image optimisation, I have a little more to learn about that.
+What let me down was image optimisation – I have a little more to learn about that.
 
 
 ## Fetching content from DatoCMS
@@ -55,9 +54,10 @@ for example, require a content creator to add an alt tag to an image, so that
 good SEO and accessibility can be enforced. Images were probably the hardest part, but
 it was also clear how comprehensive the tooling is. You can add focal points, resize, crop,
 and set aspect ratios with queries like
+
 ```
 responsiveImage(imgixParams: { ar: "3:1", fit: crop })...
-```.
+```
 
 Imaging with the mobile view of the blog index did make my lighthouse score suffer on best
 practice a little, so I do have more to learn on that one. But overall, I was able
