@@ -13,6 +13,7 @@
     "graphql": "^16.6.0",
     "graphql-request": "^5.0.0",
     "gray-matter": "^4.0.3",
+    "luxon": "^3.0.3",
     "next": "latest",
     "postcss": "^8.4.16",
     "react": "17.0.2",
