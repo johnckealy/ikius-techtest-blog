@@ -1,25 +1,33 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    container: {
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '18rem',
+      },
+    },
     extend: {
       colors: {
         'primary': '#0077B5',
         'secondary': '#c5ff3e',
-        'bgdefault': '#f8f8ff',
-        'bgsecondary': '#ffe1b4',
         'textdefault': '#2f4f4f',
-        'textlightdefault': '#f8f8ff',
+      },
+      boxShadow: {
+        'article-card': '0px 4px 4px rgba(0, 0, 0, 0.25)'
       }
     },
-    backgroundImage: {
-      'hero-pattern': "url('/images/qambio-background.jpg')",
+    fontFamily: {
+      roboto: ['Roboto', ...defaultTheme.fontFamily.sans],
     }
-    // fontFamily: {
-    //   arima: ['Arima', ...defaultTheme.fontFamily.sans],
-    // },
   },
   plugins: [],
 }

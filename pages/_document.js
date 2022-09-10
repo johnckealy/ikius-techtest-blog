@@ -10,7 +10,7 @@ export default function Document() {
         <meta property="og:url" content="<OG URL here>" />
         <meta property="og:type" content="website" />
         <link rel="icon" href="/favicon.ico" />
-        {/* <link href="https://fonts.googleapis.com/css2?family=Arima&display=swap" rel="stylesheet" /> */}
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
       </Head>
       <body>
         <Main />

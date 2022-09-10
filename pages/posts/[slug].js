@@ -1,31 +1,40 @@
-import { Image, StructuredText, useQuerySubscription } from "react-datocms";
 import Link from "next/link";
+import { Image, StructuredText } from "react-datocms";
 import { request } from "../../lib/datocms";
+import ArticlesList from "@/components/ArticlesList";
+import { ARTICLE_QUERY, PATHS_QUERY } from "../../lib/datoQueries";
+import Footer from '@/components/Footer';
 
-export default function BlogPost({ article }) {
 
-  const { title, date, articleImage, content } = article;
+export default function BlogPost({ article, allArticles }) {
+  const { title, date, articleImage, content, author } = article;
 
   return (
-    <div className="">
-      <h1>{title}</h1>
-      <span>{date}</span>
-      <Image data={articleImage.responsiveImage} />
-      <StructuredText data={content.value} />
+    <>
+      <div className="container mx-auto">
+        <div className="flex items-center justify-between py-4">
+          <div className="flex items-center">
+            <div className="w-10 h-10">
+              <Image className="rounded-full" data={author.profileImage.responsiveImage} />
+            </div>
+            <span className="pl-2">{author.name}</span>
+          </div>
+          <span className="text-gray-400">{date}</span>
+        </div>
 
+        <section>
+          <Image className=" " data={articleImage.responsiveImage} />
+          <Link href="/"><a className="hover:underline">&#8592; Back to home</a></Link>
+          <h1>{title}</h1>
+          <StructuredText data={content.value} />
+        </section>
 
-
-    </div>
+        <ArticlesList sectionHeader="Other Posts" articleListData={allArticles} />
+      </div >
+      <Footer articles={allArticles} />
+    </>
   );
 }
-
-const PATHS_QUERY = `
-query MyQuery {
-  allArticles {
-    slug
-  }
-}
-`;
 
 
 export const getStaticPaths = async (context) => {
@@ -41,40 +50,6 @@ export const getStaticPaths = async (context) => {
     fallback: "blocking",
   };
 };
-
-
-
-const ARTICLE_QUERY = `
-query MyQuery($slug: String) {
-  article(filter: {slug: {eq: $slug}}) {
-    articleImage {
-      responsiveImage {
-        alt
-        aspectRatio
-        base64
-        bgColor
-        height
-        sizes
-        src
-        srcSet
-        title
-        webpSrcSet
-        width
-      }
-    }
-    author {
-      name
-    }
-    date
-    slug
-    title
-    content {
-      value
-    }
-  }
-}
-
-`;
 
 
 export const getStaticProps = async ({ params }) => {
